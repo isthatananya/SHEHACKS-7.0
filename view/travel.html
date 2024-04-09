@@ -32,7 +32,7 @@
                 destination: formData.get('destination')
             };
             console.log(registerData);
-            const response = await fetch('/travel/travels', {
+            const response = await fetch('http://localhost:5500/travel/travels', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
