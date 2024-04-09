@@ -305,3 +305,23 @@ footer {
 .follow-us {
     margin-right: 20px; 
 }
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+    display: flex; 
+    justify-content: center; 
+}
+.rounded-button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: #D59DCC;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.rounded-button:hover {
+    background-color: #c430ab;
+}
