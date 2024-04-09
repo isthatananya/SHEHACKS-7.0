@@ -1,30 +1,44 @@
-const userService = require('../service/userService');
+const userSchema = require('../model/userModel');
+const bcrypt = require('bcryptjs');
 
-//user register
-async function registerUser(req, res) {
+
+exports.register = async (req, res) => {
+    // Check if user already exists
+    const emailExist = await userSchema.findOne
+        ({
+            email: req.body.email
+        });
+    if (emailExist) return res.status(400).send('Email already exists');
+
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+    // Create a new user
+    const user = new userSchema({
+        name: req.body.name,
+        email: req.body.email,
+        password: hashedPassword,
+        location: req.body.location,
+        username: req.body.username
+    });
     try {
-        const userData = req.body;
-        const newUser = await userService.createUser(userData);
-        res.status(201).json(newUser);
-    } catch (error) {
-        console.error('Error registering user:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        const savedUser = await user.save();
+        res.send({ user: user._id });
+    } catch (err) {
+        res.status(400).send(err);
     }
 }
 
-//user login
-async function loginUser(req, res) {
-    try {
-        const { email, password } = req.body;
-        const token = await userService.loginUser(email, password);
-        res.status(200).json({ token });
-    } catch (error) {
-        console.error('Error logging in user:', error);
-        res.status(401).json({ error: 'Unauthorized' });
-    }
+exports.login = async (req, res) => {
+    // Check if email exists
+    const user = await userSchema.findOne({ email: req.body.email });
+    if (!user) return res.status(400).send('Email is not found');
+    
+    // Check if password is correct
+    const validPass = await bcrypt.compare(req.body.password, user.password);
+    if (!validPass) return res.status(400).send('Invalid password');
+    // login without jwt
+    res.status(200).json(user);
 }
 
-module.exports = {
-    registerUser,
-    loginUser
-};
