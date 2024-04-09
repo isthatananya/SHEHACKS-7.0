@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-
+const  dotenv = require('dotenv');
+dotenv.config();
 const connect = require('./db/connect');
 
+const userRoutes = require('./router/userRoutes');  
+app.use(express.json());
+app.use('/api/user', userRoutes);
 
 app.get('/', (req, res) => {
   res.send('Server is on!');

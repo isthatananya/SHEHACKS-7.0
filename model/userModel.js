@@ -32,11 +32,11 @@ const userSchema = new mongoose.Schema({
     },
     gender:{
         type: String,
-        required: true
+        // required: true
     },
     age:{
         type: Number,
-        required: true
+        // required: true
     },
     
 });
