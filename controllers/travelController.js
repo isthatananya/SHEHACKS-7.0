@@ -24,7 +24,8 @@ const travelController = {
 
     createTravel: async (req, res) => {
         try {
-            const newTravel = new Travel(req.body);
+            const { destination, source, name, date } = req.body;
+            const newTravel = new Travel({ destination, source, name, date });
             await newTravel.save();
             res.status(201).json(newTravel);
         } catch (error) {
