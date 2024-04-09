@@ -56,6 +56,28 @@ const travelController = {
         } catch (error) {
             res.status(400).json({ error: 'Bad Request' });
         }
+    },
+    showMatchingPassengers: async (req, res) => {
+        try {
+            const { destination, source, date } = req.query;
+            const query = {};
+            if (destination) {
+                query.destination = destination;
+            }
+
+            if (source) {
+                query.source = source;
+            }
+
+            if (date) {
+                query.date = date;
+            }
+
+            const matchingPassengers = await Travel.find(query);
+            res.status(200).json(matchingPassengers);
+        } catch (error) {
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
     }
 };
 

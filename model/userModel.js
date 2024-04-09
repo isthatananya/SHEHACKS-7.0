@@ -1,46 +1,44 @@
 const mongoose = require('mongoose');
 
-
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        min: 6,
-        max: 255
+        minlength: 2,
+        maxlength: 50
     },
     email: {
         type: String,
         required: true,
-        max: 255,
-        min: 6
+        unique: true,
+        maxlength: 255,
+        minlength: 6
     },
     password: {
         type: String,
         required: true,
-        max: 1024,
-        min: 6
+        maxlength: 1024,
+        minlength: 6
     },
-    location:{
+    location: {
         type: String,
         required: true,
-        max: 255,
-        min: 6
+        maxlength: 255,
+        minlength: 2
     },
-    username:{
+    username: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    gender:{
+    gender: {
         type: String,
-        // required: true
+        enum: ['male', 'female', 'other']
     },
-    age:{
+    age: {
         type: Number,
-        // required: true
-    },
-    
+        min: 18
+    }
 });
-
-
 
 module.exports = mongoose.model('User', userSchema);
