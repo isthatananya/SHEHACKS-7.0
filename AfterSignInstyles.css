@@ -6,6 +6,7 @@
 
 body, html {
     height: 100%;
+    margin: 0;
     overflow-x: hidden;
     background-color: #28181F;
 }
@@ -17,6 +18,14 @@ body, html {
     background-position: center;
     height: 2500px;
     width: 100vw;
+     
+}
+
+.bg_link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer; 
 }
 
 /* media queries */
