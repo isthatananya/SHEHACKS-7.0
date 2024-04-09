@@ -11,10 +11,10 @@
         <div class="form-container">
             <h2>Register</h2>
             <form id="registerForm">
-                <input type="text" placeholder="Name" name="Name" required>
-                <input type="email" placeholder="Date" name="Date" required>
-                <input type="text" placeholder="Source" name="location" required>
-                <input type="text" placeholder="Destination" name="location" required>
+                <input type="text" placeholder="Name" name="name" required>
+                <input type="text" placeholder="Date" name="date" required>
+                <input type="text" placeholder="Source" name="source" required>
+                <input type="text" placeholder="Destination" name="destination" required>
                 <button type="submit">Register</button>
             </form>
         </div>
@@ -27,12 +27,12 @@
             const formData = new FormData(event.target);
             const registerData = {
                 name: formData.get('name'),
-                email: formData.get('email'),
-                password: formData.get('password'),
-                location: formData.get('location'),
-                username: formData.get('username')
+                date: formData.get('date'),
+                source: formData.get('source'),
+                destination: formData.get('destination')
             };
-            const response = await fetch('/register', {
+            console.log(registerData);
+            const response = await fetch('/travel/travels', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,23 +43,6 @@
             console.log(data);
         });
 
-        document.getElementById('loginForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const loginData = {
-                email: formData.get('email'),
-                password: formData.get('password')
-            };
-            const response = await fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(loginData)
-            });
-            const data = await response.json();
-            console.log(data);
-        });
     </script>
 </body>
 </html>
