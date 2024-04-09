@@ -116,3 +116,24 @@ button[type="submit"] {
     margin-bottom: 10px;
     color: #808080;
 }
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.rounded-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: #D59DCC;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.rounded-button:hover {
+    background-color: #c430ab;
+}
+
