@@ -6,8 +6,10 @@ dotenv.config();
 const connect = require('./db/connect');
 
 const userRoutes = require('./router/userRoutes');  
+const travelRoutes = require('./router/travelRoutes');
 app.use(express.json());
 app.use('/api/user', userRoutes);
+app.use('/travel', travelRoutes);
 
 app.get('/', (req, res) => {
   res.send('Server is on!');
