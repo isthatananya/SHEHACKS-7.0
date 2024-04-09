@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #28181F;
-    color: #D59DCC; /* Updated text color */
+    color: #D59DCC; 
 }
 
 .outer-container {
@@ -15,7 +15,7 @@ body {
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-    margin: 150px 200px;
+    margin: 150px auto; /* Centering the container horizontally */
 }
 
 .image-container {
@@ -52,6 +52,7 @@ body {
 .signin-text {
     text-align: center;
     margin-bottom: 20px;
+    color: #D59DCC; 
 }
 
 .custom-input-box {
@@ -63,21 +64,21 @@ body {
     font-size: 14px;
     display: block;
     margin-bottom: 5px;
-    color: #fff; /* Updated label color */
+    color: #fff; 
 }
 
-.input-with-custom input[type="email"] {
-    padding-left: 10px;
-}
-
+.custom-input-box input[type="text"],
 .custom-input-box input[type="email"],
-.custom-input-box input[type="password"] {
+.custom-input-box input[type="password"],
+.custom-input-box select,
+.custom-input-box input[type="number"] {
     width: 100%;
     padding: 10px;
     border: 1px solid;
     border-radius: 5px;
     outline: none;
-    background-color: #6863638e; /* Greyish color */
+    background-color: #6863638e; 
+    color: #fff; 
 }
 
 button[type="submit"] {
@@ -90,7 +91,6 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-/* Continue with Google Button */
 .continue-with-google {
     margin-top: 20px;
     text-align: center;
