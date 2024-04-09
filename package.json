@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/sakshieng/WorkSheHack#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongod": "^2.0.0",
     "mongodb": "^6.5.0",

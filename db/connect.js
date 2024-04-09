@@ -1,44 +1,33 @@
 const { MongoClient } = require('mongodb');
 
-// Connection URI
-const uri = 'mongodb://localhost:27017'; // Change this to your MongoDB URI
-
-// Database Name
-const dbName = 'mydatabase'; // Change this to your database name
-
-// Create a new MongoClient
+// MongoDB Atlas connection string
+const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Connect to the MongoDB server
 async function connect() {
+  const dbName = 'your_database_name_here';
   try {
-    // Connect to the MongoDB server
     await client.connect();
 
-    console.log('Connected to MongoDB server');
+    console.log('Connected to MongoDB Atlas');
 
-    // Access the database
     const db = client.db(dbName);
 
-    // Perform operations on the database
-    // Example: Insert a document into a collection
     const collection = db.collection('mycollection');
     await collection.insertOne({ name: 'John', age: 30 });
 
     console.log('Document inserted');
 
-    // Example: Find documents in a collection
     const documents = await collection.find({}).toArray();
     console.log('Documents found:', documents);
 
   } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
+   
+    onsole.error('Error connecting to MongoDB Atlas:', error);
   } finally {
-    // Close the connection when done
     await client.close();
-    console.log('MongoDB connection closed');
+    console.log('MongoDB Atlas connection closed');
   }
 }
 
-// Call the connect function to establish the connection
 connect();

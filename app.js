@@ -2,27 +2,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const { MongoClient } = require('mongodb');
+const dotenv = require('dotenv');
+
+dotenv.config(); // Load environment variables from .env file
 
 const app = express();
 const port = 3000;
-const uri = 'mongodb://localhost:27017'; 
-const dbName = 'Ecomm-'; 
-app.use(express.json());
+const uri = process.env.MONGODB_URI;
+const dbName = process.env.DB_NAME;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-async function connect() {
-  try {
-    await client.connect();
-
-    console.log('Connected to MongoDB server');
-  } catch (error) {
-    console.error('Error connecting to MongoDB:', error);
-  }
-}
-
-connect();
+app.use(express.json());
 app.use(bodyParser.json());
+
 // Signup route
 app.post('/signup', async (req, res) => {
   try {
@@ -39,7 +32,6 @@ app.post('/signup', async (req, res) => {
       password: hashedPassword
     };
 
-    // Insert the user into the database
     await collection.insertOne(newUser);
 
     res.status(201).json({ message: 'User created successfully' });
@@ -62,7 +54,6 @@ app.post('/login', async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    // Compare passwords
     const passwordMatch = await bcrypt.compare(req.body.password, user.password);
 
     if (!passwordMatch) {
