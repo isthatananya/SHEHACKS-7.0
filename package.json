@@ -1,0 +1,26 @@
+{
+  "name": "shehac",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakshieng/WorkSheHack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sakshieng/WorkSheHack/issues"
+  },
+  "homepage": "https://github.com/sakshieng/WorkSheHack#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongod": "^2.0.0",
+    "mongodb": "^6.5.0",
+    "nodemon": "^3.1.0"
+  }
+}
