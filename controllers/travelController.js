@@ -59,7 +59,7 @@ const travelController = {
     },
     showMatchingPassengers: async (req, res) => {
         try {
-            const { destination, source, date } = req.query;
+            const { destination, source, date } = req.body;
             const query = {};
             if (destination) {
                 query.destination = destination;
@@ -72,7 +72,7 @@ const travelController = {
             if (date) {
                 query.date = date;
             }
-
+            console.log(destination);
             const matchingPassengers = await Travel.find(query);
             res.status(200).json(matchingPassengers);
         } catch (error) {

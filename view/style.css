@@ -7,6 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #28181F;
+    color: #D59DCC; 
 }
 
 .outer-container {
@@ -14,32 +15,32 @@ body {
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-    margin: 150px 200px;
+    margin: 150px auto; /* Centering the container horizontally */
 }
 
 .image-container {
-    width: 40%; 
-    height: auto; 
+    width: 40%;
+    height: auto;
 }
 
 .image-container img {
     max-width: 100%;
     height: auto;
     width: 100%;
-    border-top-left-radius: 0; 
-    border-bottom-left-radius: 50px; 
-    border-bottom-right-radius: 0; 
-    border-top-right-radius: 50px; 
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 50px;
 }
 
 .container {
-    width: 100%; 
-    max-width: 40%; 
+    width: 100%;
+    max-width: 40%;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #28181F;
-} 
+}
 
 .container h1 {
     text-align: center;
@@ -49,9 +50,9 @@ body {
 
 .register-text,
 .signin-text {
-    color: #D59DCC;
-    text-align: center; 
-    margin-bottom: 20px; 
+    text-align: center;
+    margin-bottom: 20px;
+    color: #D59DCC; 
 }
 
 .custom-input-box {
@@ -59,27 +60,25 @@ body {
     margin-bottom: 20px;
 }
 
-
 .custom-input-box label {
-    color: #ffffff; 
     font-size: 14px;
     display: block;
     margin-bottom: 5px;
+    color: #fff; 
 }
 
-
-.input-with-custom input[type="email"] {
-    padding-left: 10px;
-}
-
+.custom-input-box input[type="text"],
 .custom-input-box input[type="email"],
-.custom-input-box input[type="password"] {
+.custom-input-box input[type="password"],
+.custom-input-box select,
+.custom-input-box input[type="number"] {
     width: 100%;
     padding: 10px;
     border: 1px solid;
     border-radius: 5px;
     outline: none;
-    background-color: #6863638e;
+    background-color: #6863638e; 
+    color: #fff; 
 }
 
 button[type="submit"] {
@@ -91,7 +90,6 @@ button[type="submit"] {
     color: #fff;
     cursor: pointer;
 }
-
 
 .continue-with-google {
     margin-top: 20px;
@@ -116,7 +114,5 @@ button[type="submit"] {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
-    color: #808080; 
+    color: #808080;
 }
-
-
